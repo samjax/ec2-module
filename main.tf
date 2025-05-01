@@ -15,13 +15,13 @@ resource "aws_instance" "example" {
 
   connection {
     type        = "ssh"
-    user        = "ubuntu"
+    user        = "ec2-user"
     private_key = file("${path.module}/terraform.pem")
     host        = self.public_ip
   }
 
   provisioner "remote-exec" {
-    inline = ["echo Hello from EC2"]
+    inline = ["ip a"]
   }
 
   tags = {
