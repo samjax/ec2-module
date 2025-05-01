@@ -1,0 +1,1 @@
+echo "Hello from EC2 user_data" > /home/ubuntu/welcome.txt

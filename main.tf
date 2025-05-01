@@ -12,8 +12,9 @@ resource "aws_instance" "example" {
   key_name      = var.key_name
 
   vpc_security_group_ids = [data.aws_security_group.allow_ssh.id]
+  user_data = file("${path.module}/script.sh")
 
-  connection {
+  /*connection {
     type        = "ssh"
     user        = "ec2-user"
     private_key = file("${path.module}/terraform.pem")
@@ -22,7 +23,7 @@ resource "aws_instance" "example" {
 
   provisioner "remote-exec" {
     inline = ["ip a"]
-  }
+  } */
 
   tags = {
     Name = "SimpleEC2"
